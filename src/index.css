@@ -1,13 +1,142 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css?family=Exo:700,800");
+@import url("https://fonts.googleapis.com/css?family=La+Belle+Aurore");
+
+@font-face {
+    font-family: "Virgil 3 YOFF";
+    src: url("assets/fonts/Virgil3YOFF.woff2") format("woff2"), url("assets/fonts/Virgil3YOFF.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "FibreFF";
+    src: url("assets/fonts/fibre-font.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "FibreFF";
+    src: url("assets/fonts/fibre-font.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "KitchenSink";
+    src: url("assets/fonts/kitchen-sink-bold.otf") format("opentype");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "KitchenSink";
+    src: url("assets/fonts/kitchen-sink-thin.otf") format("opentype");
+    font-weight: thin;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "KitchenSink";
+    src: url("assets/fonts/kitchen-sink-regular.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Track";
+    src: url("assets/fonts/Track.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Track";
+    src: url("assets/fonts/Somatic-Rounded.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.font-virgil {
+    font-family: "Virgil 3 YOFF";
+}
+
+.font-exo {
+    font-family: "Exo";
+}
+
+.font-belle {
+    font-family: "La Belle Aurore";
+}
+
+.font-kitchen {
+    font-family: "KitchenSink";
+}
+.font-track {
+    font-family: "Track";
+}
+.font-fibre {
+    font-family: "FibreFF";
+}
+.font-somatic {
+    font-family: "Somatic-Rounded";
+}
+.typewriter h1 {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: 0.15em solid orange; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: 0.15em; /* Adjust as needed */
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+    from,
+    to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: orange;
+    }
+}
+
+/* Fly app header from current position to top left corner*/
+@keyframes flyTopLeft {
+    100% {
+        transform: translateX(calc(24% - 50vw)) translateY(-50vh) scale(0.4);
+    }
+}
+
+.flyTopLeft {
+    animation: flyTopLeft 1s forwards cubic-bezier(1, 0.24, 0.84, 0.165);
+}
+
+@keyframes boxExpand {
+    0% {
+        width: 0px;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+.searchBoxEntrance {
+    animation: bounceInRight 0.5s forwards;
+    animation-delay: 3s;
 }
