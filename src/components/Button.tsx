@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import React from "react";
-import { classicNameResolver } from "typescript";
 
 interface Props {
     icon?: React.ReactNode;

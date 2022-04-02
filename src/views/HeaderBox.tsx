@@ -20,7 +20,7 @@ const HeaderBox: React.FC<Props> = ({ onAnimationEnd }) => {
             // remove fly animation class class
             headerRef.current && headerRef.current.classList.remove("flyTopLeft");
         }
-    }, [authenticated]);
+    }, [authenticated, onAnimationEnd]);
 
     return (
         <div ref={headerRef} className="fixed flex flex-col mb-8">

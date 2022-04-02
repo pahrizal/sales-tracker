@@ -29,7 +29,7 @@ const SearchBox: React.FC<Props> = ({ onAnimationEnd, onLogout, show }) => {
         if (animationEnd && onAnimationEnd) {
             onAnimationEnd();
         }
-    }, [animationEnd]);
+    }, [animationEnd, onAnimationEnd]);
 
     const handleLogout = () => {
         logout();

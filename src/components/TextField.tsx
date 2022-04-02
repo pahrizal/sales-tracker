@@ -11,7 +11,7 @@ const TextField: React.FC<Props> = ({ placeholder = "type", type = "text", onCha
     const [value, setValue] = useState("");
     useEffect(() => {
         onChange && onChange(value);
-    }, [value]);
+    }, [onChange, value]);
     return (
         <div className={clsx("relative mb-6")}>
             {focus && value && (

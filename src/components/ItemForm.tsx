@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import React from "react";
-import { v4 as uuidV4 } from "uuid";
 import useAuth from "../hooks/authHook";
 import { firebaseAuth } from "../modules/firebase";
 import { ItemData } from "../modules/items/item.definition";
