@@ -2,9 +2,9 @@ import clsx from "clsx";
 import React from "react";
 import { firebaseAuth } from "../modules/firebase";
 import NewItemCard from "../modules/items/card";
+import ItemContext from "../modules/items/context";
 import { ItemData, ItemEvent } from "../modules/items/definition";
 import ItemForm from "../modules/items/form";
-import ItemContext from "../modules/items/context";
 import ItemService from "../modules/items/service";
 
 const Home = () => {
@@ -35,7 +35,7 @@ const Home = () => {
             },
             (err) => {}
         );
-    }, []);
+    }, [items, setFilteredItems, setItems]);
     React.useEffect(() => {
         if (!filterTag) {
             setFilteredItems(items);
