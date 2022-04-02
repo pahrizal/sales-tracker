@@ -30,6 +30,8 @@ export default function useAuth() {
                 setAuthenticating(false);
                 // save user data to local storage
                 localStorage.setItem("user", JSON.stringify(user));
+                // reload the page, so we have the latest data
+                window.location.href = "/";
             })
             .catch((error) => {
                 setAuthenticating(false);
