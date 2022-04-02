@@ -7,7 +7,7 @@ import { firebaseAuth, googleAuthProvider } from "../modules/firebase";
  * @returns {[boolean, () => void]}
  */
 export default function useAuth() {
-    const [user, setUser] = React.useState<User | null>(null);
+    const [user, setUser] = React.useState<User | null>(firebaseAuth.currentUser);
     const [authenticating, setAuthenticating] = React.useState(false);
     const [authenticated, setAuthenticated] = React.useState(false);
     const logout = React.useCallback(() => {
@@ -39,9 +39,9 @@ export default function useAuth() {
 
     // grab from local storage if user has check the Remember me
     React.useEffect(() => {
-        const user = localStorage.getItem("user");
-        if (user) {
-            setUser(JSON.parse(user));
+        const savedUser = localStorage.getItem("user");
+        if (savedUser) {
+            setUser(JSON.parse(savedUser));
             setAuthenticated(true);
         }
     }, []);
