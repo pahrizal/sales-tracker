@@ -94,13 +94,13 @@ export default function ItemCard(props: ItemData) {
                         <div className="flex flex-col w-[110px] text-xs">
                             <p>Current Stock:</p>
                             <h2 className="text-md text-lime-400 font-bold">
-                                {props.price.sell.toFixed(0)}
+                                {props.stock.current.toFixed(0)}
                             </h2>
                         </div>
                         <div className="flex flex-col w-[110px] text-xs">
                             <p>Minimum Stock:</p>
                             <h2 className="text-md text-lime-400 font-bold">
-                                {props.price.buy.toFixed(0)}
+                                {props.stock.min.toFixed(0)}
                             </h2>
                         </div>
                     </div>
