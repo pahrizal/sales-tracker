@@ -33,9 +33,9 @@ export default function ItemCard(props: ItemData) {
             style={{ maxHeight: 280 }}
             className={clsx(
                 "grid-item rounded-[1rem] w-full h-full pb-10",
-                "pt-24 px-4 relative mt-8 pb-6",
-                "bg-sky-700",
-                "border-sky-700"
+                "pt-20 px-4 relative mt-8 pb-6",
+                "bg-gradient-to-r from-sky-500 to-sky-700",
+                "border-slate-900"
             )}
         >
             <div
@@ -61,15 +61,49 @@ export default function ItemCard(props: ItemData) {
                 )}
             </div>
             {props.id ? (
-                <div className="">
-                    <p>Category: {props.category}</p>
-                    <p>Name: {props.name}</p>
-                    <p>Description: {props.description}</p>
-                    <p>Sell Price: {props.price.sell}</p>
-                    <p>Cost Price: {props.price.buy}</p>
-                    <p>
-                        Stock: {props.stock.current},{props.stock.min}
-                    </p>
+                <div className="font-sans z-10">
+                    <h1 className="font-exo text-center text-white text-2xl font-bold text-lime-400">
+                        {props.name}
+                    </h1>
+                    <div className="text-center w-full font-sans font-italic mt-2 h-[30px] text-white">
+                        <p className="text-[10px] text-ellipsis overflow-hidden">
+                            {props.description}
+                        </p>
+                    </div>
+                    <div className="flex flex-row space-x-4 justify-start mt-4">
+                        <div className="flex flex-col w-[110px] text-xs">
+                            <p>Sell Price:</p>
+                            <h2 className="text-md text-lime-400 font-bold">
+                                {props.price.sell.toLocaleString("en-US", {
+                                    style: "currency",
+                                    currency: "USD",
+                                })}
+                            </h2>
+                        </div>
+                        <div className="flex flex-col w-[110px] text-xs">
+                            <p>Buy Price:</p>
+                            <h2 className="text-md text-lime-400  font-bold">
+                                {props.price.buy.toLocaleString("en-US", {
+                                    style: "currency",
+                                    currency: "USD",
+                                })}
+                            </h2>
+                        </div>
+                    </div>
+                    <div className="flex flex-row space-x-4 justify-start mt-4">
+                        <div className="flex flex-col w-[110px] text-xs">
+                            <p>Current Stock:</p>
+                            <h2 className="text-md text-lime-400 font-bold">
+                                {props.price.sell.toFixed(0)}
+                            </h2>
+                        </div>
+                        <div className="flex flex-col w-[110px] text-xs">
+                            <p>Minimum Stock:</p>
+                            <h2 className="text-md text-lime-400 font-bold">
+                                {props.price.buy.toFixed(0)}
+                            </h2>
+                        </div>
+                    </div>
                 </div>
             ) : (
                 <button
@@ -88,10 +122,10 @@ export default function ItemCard(props: ItemData) {
             {props.id && (
                 <div
                     className={clsx(
-                        "flex flex-row justify-between px-6 items-end pb-2",
-                        "rounded-[24px] w-[132px] h-[64px]",
-                        "bg-inherit",
-                        "absolute -bottom-[18px] right-0"
+                        "flex flex-row justify-between px-6 items-center",
+                        "rounded-b-[24px] w-[132px] h-[40px]",
+                        "bg-gradient-to-r from-sky-500 to-sky-700",
+                        "absolute -bottom-[40px] left-1/2 -translate-x-1/2"
                     )}
                 >
                     <IconButton

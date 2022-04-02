@@ -199,7 +199,7 @@ const ItemForm: React.FC<Props> = ({ onClose, onSave }) => {
                             onClick={handleSaveItem}
                             className={clsx("text-current border-current")}
                         >
-                            Add Item
+                            {editing ? "Save" : "Create"}
                         </Button>
                     </div>
                 </div>
