@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import LogoutIcon from "../assets/icons/LogoutIcon";
 import useAuth from "../hooks/auth";
 import { firebaseAuth } from "../modules/firebase";
+import itemContext from "../modules/items/context";
 
 interface Props {
     show?: boolean;
@@ -10,7 +11,8 @@ interface Props {
     onLogout?: () => void;
 }
 const SearchBox: React.FC<Props> = ({ onAnimationEnd, onLogout, show }) => {
-    const { user, authenticated, logout } = useAuth();
+    const { authenticated, logout } = useAuth();
+    const { setFilterTag } = React.useContext(itemContext);
     const searchBoxRef = useRef<HTMLDivElement>(null);
     const [animationEnd, setAnimationEnd] = useState(false);
     useEffect(() => {
@@ -61,8 +63,9 @@ const SearchBox: React.FC<Props> = ({ onAnimationEnd, onLogout, show }) => {
                 >
                     <input
                         className={clsx(
-                            "w-full outline-none py-2 px-5 bg-transparent"
+                            "w-full font-track outline-none py-2 px-5 bg-transparent"
                         )}
+                        onChange={(e) => setFilterTag(e.target.value)}
                         type="text"
                         placeholder="Type to search your item here"
                     />

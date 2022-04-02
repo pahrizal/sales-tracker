@@ -8,10 +8,8 @@ import ItemContext from "../modules/items/context";
 import ItemService from "../modules/items/service";
 
 const Home = () => {
-    const [items, setItems] = React.useState<ItemData[]>([]);
-    const [adding, setAdding] = React.useState(false);
-    const [editing, setEditing] = React.useState(false);
-    const [item, setItem] = React.useState<ItemData | null>(null);
+    const { items, setItems, filterTag, setFilteredItems, filteredItems } =
+        React.useContext(ItemContext);
     React.useEffect(() => {
         const user = firebaseAuth.currentUser;
         if (!user) return;
@@ -32,15 +30,28 @@ const Home = () => {
                     };
                     return item;
                 });
+                setFilteredItems(items);
                 setItems(mappedItems);
             },
             (err) => {}
         );
     }, []);
+    React.useEffect(() => {
+        if (!filterTag) {
+            setFilteredItems(items);
+            return;
+        }
+        const filtered = items.filter((item) => {
+            return (
+                item.category.toLowerCase().includes(filterTag.toLowerCase()) ||
+                item.name.toLowerCase().includes(filterTag.toLowerCase()) ||
+                item.description.toLowerCase().includes(filterTag.toLowerCase())
+            );
+        });
+        setFilteredItems(filtered);
+    }, [filterTag, items, setFilteredItems]);
     return (
-        <ItemContext.Provider
-            value={{ adding, editing, item, setEditing, setAdding, setItem }}
-        >
+        <>
             <section
                 className={clsx(
                     "",
@@ -69,13 +80,13 @@ const Home = () => {
                         description={""}
                         image={""}
                     />
-                    {items.map((item) => (
+                    {filteredItems.map((item) => (
                         <NewItemCard key={item.id} {...item} />
                     ))}
                 </div>
             </section>
             <ItemForm />
-        </ItemContext.Provider>
+        </>
     );
 };
 

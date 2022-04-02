@@ -21,8 +21,14 @@ export enum ItemEvent {
 export interface iItemContext {
     adding: boolean;
     editing: boolean;
-    item: ItemData | null;
+    selectedItem: ItemData | null;
+    items: ItemData[];
+    filteredItems: ItemData[];
+    filterTag: string;
     setAdding: (adding: boolean) => void;
     setEditing: (adding: boolean) => void;
     setItem: (data: ItemData | null) => void;
+    setFilteredItems: (data: ItemData[]) => void;
+    setFilterTag: (tag: string) => void;
+    setItems: (data: ItemData[]) => void;
 }

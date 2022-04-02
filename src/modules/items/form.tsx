@@ -29,8 +29,14 @@ const emptyData: ItemData = {
 };
 const ItemForm: React.FC<Props> = ({ onClose, onSave }) => {
     const { user } = useAuth();
-    const { adding, setAdding, setEditing, setItem, item, editing } =
-        useContext<iItemContext>(itemContext);
+    const {
+        adding,
+        setAdding,
+        setEditing,
+        setItem,
+        selectedItem: item,
+        editing,
+    } = useContext<iItemContext>(itemContext);
     const containerRef = useRef<HTMLDivElement>(null);
     const itemService = new ItemService(user?.uid);
     const [data, setData] = React.useState<ItemData>({ ...emptyData });
