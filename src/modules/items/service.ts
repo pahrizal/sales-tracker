@@ -35,7 +35,6 @@ export default class ItemService {
         onError?: (error: Error) => void
     ) {
         const path = this.dataPath + "/" + data.id;
-        console.log("updating ", path);
         if (!data.id) return;
         const dataRef = ref(db, path);
         update(dataRef, data).then(onSuccess).catch(onError);
@@ -45,7 +44,6 @@ export default class ItemService {
         onSuccess?: () => void,
         onError?: (error: Error) => void
     ) {
-        console.log("removing item", id);
         const dataRef = ref(db, this.dataPath + "/" + id);
         remove(dataRef).then(onSuccess).catch(onError);
     }
