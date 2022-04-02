@@ -24,9 +24,7 @@ const MenuView = () => {
                 });
                 setItems(mappedItems);
             },
-            (err) => {
-                console.log(err);
-            }
+            (err) => {}
         );
     }, []);
     return (

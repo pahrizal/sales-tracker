@@ -35,12 +35,9 @@ const ItemForm: React.FC<Props> = ({ onClose, onSave }) => {
         itemService.create(
             data,
             (val) => {
-                console.log(val.key);
                 onSave && onSave();
             },
-            (err) => {
-                console.log(err);
-            }
+            (err) => {}
         );
     };
     const handleClose = () => {
