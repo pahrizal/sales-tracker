@@ -18,3 +18,11 @@ export enum ItemEvent {
     change = "change",
     delete = "delete",
 }
+export interface iItemContext {
+    adding: boolean;
+    editing: boolean;
+    item: ItemData | null;
+    setAdding: (adding: boolean) => void;
+    setEditing: (adding: boolean) => void;
+    setItem: (data: ItemData | null) => void;
+}

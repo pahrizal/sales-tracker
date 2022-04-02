@@ -1,9 +1,9 @@
 import clsx from "clsx";
-import React, { useState } from "react";
-import useAuth from "./hooks/authHook";
-import HeaderBox from "./views/HeaderBox";
-import MenuView from "./views/MenuView";
-import SearchBox from "./views/SearchBox";
+import { useState } from "react";
+import useAuth from "./hooks/auth";
+import HeaderBox from "./pages/header";
+import Home from "./pages/home";
+import SearchBox from "./pages/searchbar";
 
 function App() {
     const { authenticated } = useAuth();
@@ -12,11 +12,7 @@ function App() {
     const handleLogout = () => {
         document.location.href = "/";
     };
-    React.useEffect(() => {
-        if (authenticated) {
-            // document.location.reload();
-        }
-    }, [authenticated]);
+
     return (
         <div
             className={clsx(
@@ -26,8 +22,12 @@ function App() {
             )}
         >
             <HeaderBox onAnimationEnd={() => setFlyAnimEnd(true)} />
-            <SearchBox onLogout={handleLogout} show={flyAnimEnd} onAnimationEnd={() => setAnimationEnd(true)} />
-            {animationEnd && authenticated && <MenuView />}
+            <SearchBox
+                onLogout={handleLogout}
+                show={flyAnimEnd}
+                onAnimationEnd={() => setAnimationEnd(true)}
+            />
+            {animationEnd && authenticated && <Home />}
         </div>
     );
 }
